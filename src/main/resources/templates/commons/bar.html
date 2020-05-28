@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- nav -->
+<nav th:fragment="navbar">
+    <div id="logo">
+        <h1><a href="index.html" th:href="@{/}">上海博琴资产管理有限公司</a></h1>
+    </div>
+    <input type="checkbox" id="drop">
+    <ul class="menu mt-2">
+        <li class="active"><a href="index.html" th:href="@{/}">主页</a></li>
+        <li class="mx-lg-3 mx-md-2 my-md-0 my-1"><a href="about.html" th:href="@{about}">公司介绍</a></li>
+        <li class="mx-lg-3 mx-md-2 my-md-0 my-1">
+            <!-- First Tier Drop Down -->
+            <label for="drop-2" class="toggle toogle-2">更多<span class="fa fa-angle-down" aria-hidden="true"></span>
+            </label>
+            <a href="#">更多<span class="fa fa-angle-down" aria-hidden="true"></span></a>
+            <input type="checkbox" id="drop-2">
+            <ul>
+                <li><a href="team.html" th:href="@{team}" class="drop-text">投研团队</a></li>
+                <li><a href="product.html" th:href="@{product}" class="drop-text">产品详情</a></li>
+            </ul>
+        </li>
+        <li><a href="service.html" th:href="@{service}">投资理念</a></li>
+    </ul>
+</nav>
+<!-- //nav -->
+</body>
+</html>

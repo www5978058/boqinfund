@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <th:block th:include="~{commons/head::head}"></th:block>
+  </head>
+  <body>
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+      <div class="header-w3layouts">
+        <!--//navigation section -->
+        <nav th:replace="~{commons/bar::navbar}"></nav>
+      </div>
+    </div>
+    <!--//headder-->
+    <div th:replace="~{commons/short::short('公司介绍')}"></div>
+    <!--about-->
+    <!--about-one-->
+    <section class="about-inner py-lg-4 py-md-3 py-sm-3 py-3">
+      <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+        <h3 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">公司介绍</h3>
+        <div class="row">
+          <div class="col-lg-6 w3layouts-left-side-img">
+            <img src="images/11.jpg" th:src="@{/assets/images/11.jpg}" class="img-thumbnail" alt="">
+          </div>
+          <div class="col-lg-6 w3layouts-right-side-img">
+            <div class="abut-inner-wls-head">
+              <h4 class="pb-3">公司背景</h4>
+              <p>上海博琴资产管理有限公司成立于2016年3月，注册资本2000万元，实收资本为2000万元。中国证券投资基金业协会私募投资基金管理人。公司是一家秉承价值投资理念、立足于自主深度研究、拥有全景投资视野的专业化投资管理机构。公司拥有专业的知识，雄厚的投研团队以及丰富的证券投资经验，对中国资本市场及上市公司有着比较深刻的理解，并和券商、基金及银行保持着非常良好的关系，拥有良好的客户群体。公司的主要目标是为客户提供优质的投资服务，使客户获得稳定、可持续、获利机会平等的盈利机会。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

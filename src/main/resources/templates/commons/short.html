@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="using-border py-3" th:fragment="short(name)">
+    <div class="inner_breadcrumb  ml-4">
+        <ul class="short_ls">
+            <li>
+                <a href="index.html" th:href="@{/}">主页</a>
+                <span>/ /</span>
+            </li>
+            <li th:text="${name}"></li>
+        </ul>
+    </div>
+</div>
+<!-- //short-->
+</body>
+</html>

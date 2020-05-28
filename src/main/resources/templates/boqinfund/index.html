@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{commons/head::head}"></th:block>
+</head>
+<body>
+<div class="header-outs" id="home">
+    <div class="header-w3layouts">
+        <nav th:replace="~{commons/bar::navbar}"></nav>
+    </div>
+    <div class="slider">
+        <div class="slider-img">
+            <div class="container">
+                <div class="slider-info ">
+                    <h5>最好的投资公司</h5>
+                    <div class="bottom-info">
+                        <p>让赚钱不再困难</p>
+                    </div>
+                    <div class="outs_more-buttn">
+                        <a href="about.html" th:href="@{about}">了解更多</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<section class="buttom-footer py-lg-4 py-md-3 py-sm-3 py-3">
+    <div class="container py-lg-5 py-md-5 py-sm-4 py-4">
+        <span>当日收益:</span><span id="dayEarn" style="color: red"></span>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;年收益:</span><span id="yearEarn" style="color: red"></span>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div id="main" style="height:400px"></div>
+        <!-- ECharts单文件引入 -->
+        <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+        <script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+        <script type="text/javascript">
+            var dates, prices;
+            // 路径配置
+            require.config({
+                paths: {
+                    echarts: 'http://echarts.baidu.com/build/dist'
+                }
+            });
+            $.getJSON('/fund/showFundPrice', function (data) {
+                dates = data.dates;
+                prices = data.prices;
+                $("#dayEarn").text(data.dayEarn);
+                $("#yearEarn").text(data.yearEarn);
+                // 使用
+                require(
+                    [
+                        'echarts',
+                        'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+                    ],
+                    function (ec) {
+                        // 基于准备好的dom，初始化echarts图表
+                        var myChart = ec.init(document.getElementById('main'));
+
+                        var option = {
+                            title: {
+                                text: '博琴六号私募证券投资基金 ',
+                                subtext: 'P1062718'
+                            },
+                            tooltip: {
+                                trigger: 'axis'
+                            },
+                            legend: {
+                                data: ['股票投资收益(元)']
+                            },
+                            calculable: true,
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    boundaryGap: false,
+                                    data: dates
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value'
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: '股票投资收益(元)',
+                                    type: 'line',
+                                    data: prices,
+                                    markPoint: {
+                                        data: [
+                                            {type: 'max', name: '最大值'}
+                                        ]
+                                    }
+                                }
+                            ]
+                        };
+
+                        // 为echarts对象加载数据
+                        myChart.setOption(option);
+                    }
+                );
+            });
+        </script>
+    </div>
+</section>
+</body>
+</html>

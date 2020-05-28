@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:include="~{commons/head::head}"></th:block>
+</head>
+  <body>
+    <!--headder-->
+    <div class="header-outs inner_page-banner " id="home">
+      <div class="header-w3layouts">
+        <nav th:replace="~{commons/bar::navbar}"></nav>
+      </div>
+    </div>
+    <!--//headder-->
+    <div th:replace="~{commons/short::short('产品详情')}"></div>
+    <section class="buttom-footer py-lg-4 py-md-3 py-sm-3 py-3">
+      <div class="container py-lg-5 py-md-5 py-sm-4 py-4">
+        <div class="state-us mb-lg-4 mb-md-3 mb-3 text-center">
+          <div class="abt-text second-head">
+            <img src="images/g1.jpg" th:src="@{/assets/images/g1.jpg}" alt="news image" class="img-fluid" style="align-content: center;width: 70%">
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
